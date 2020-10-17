@@ -1,6 +1,6 @@
 import Axios from "axios";
 import React, { Component } from "react";
-import SimpleReactCalendar from 'simple-react-calendar'
+import DatePicker from "react-bootstrap-date-picker";
 
 const formvalid = formErrors => {
     let valid = true;
@@ -159,7 +159,7 @@ export default class Browser extends Component {
                                             <label>Start Date</label>
                                                 <input type="text" className="form-control" />
                                                 <div className="input-group-addon">
-                                                    <span className="glyphicon glyphicon-th"></span>
+                                                <DatePicker id="example-datepicker" value={this.state.start_time}/>
                                                 </div>
                                             </div>
                                             {/* <div className="form-group">
