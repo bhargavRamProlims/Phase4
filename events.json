@@ -1,0 +1,67 @@
+{
+  "events": [
+    {
+      "event_name": "Folk-Tales",
+      "event_details": "This event is about the folk music.",
+      "event_type": "music",
+      "location": "Hyderabad",
+      "start_time": "14-10-2020",
+      "end_time": "15-10-2020",
+      "id": 1
+    },
+    {
+      "event_name": "Folk-Movie",
+      "event_details": "This event is about the folk Movie.",
+      "event_type": "movie",
+      "location": "Hyderabad",
+      "start_time": "15-10-2020",
+      "end_time": "16-10-2020",
+      "id": 2
+    },
+    {
+      "event_name": "Metallica",
+      "event_details": "This event is about the Heavy Metal concert.",
+      "event_type": "music",
+      "location": "Hyderabad",
+      "start_time": "16-10-2020",
+      "end_time": "20-10-2020",
+      "id": 3
+    },
+    {
+      "event_name": "Local Train",
+      "event_details": "This event is about the Music concert.",
+      "event_type": "music",
+      "location": "Delhi",
+      "start_time": "16-10-2020",
+      "end_time": "20-10-2020",
+      "id": 4
+    },
+    {
+      "event_name": "Local Train",
+      "event_details": "This event is about the Music concert.",
+      "event_type": "music",
+      "location": "Bangalore",
+      "start_time": "14-10-2020",
+      "end_time": "16-10-2020",
+      "id": 5
+    },
+    {
+      "event_name": "IPrevail",
+      "event_details": "This event is about the Heavy Metal concert.",
+      "event_type": "music",
+      "location": "Bangalore",
+      "start_time": "20-10-2020",
+      "end_time": "24-10-2020",
+      "id": 6
+    },
+    {
+      "event_name": "Testing3",
+      "event_details": "This event is about the Heavy test concert.",
+      "event_type": "test",
+      "location": "Bangalore",
+      "start_time": "20-10-2020",
+      "end_time": "24-10-2020",
+      "id": 7
+    }
+  ]
+}
