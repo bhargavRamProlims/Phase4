@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router,  Switch, Route } from "react-router-dom";
 import Browser from "./browse";
+import EditEvent from "./editEvent";
 
 const Home = () => {
     return (
@@ -31,6 +32,7 @@ class Main extends Component {
                     <Switch>
                         <Route path="/" exact component={Home} />
                         <Route path="/browse" component={Browser} />
+                        <Route path="/edit-event/:id" component={EditEvent}/>
                     </Switch>
 
                 </div>

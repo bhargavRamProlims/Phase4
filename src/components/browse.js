@@ -1,6 +1,8 @@
 import Axios from "axios";
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
+import { Link } from "react-router-dom";
+var dateFormat = require('dateformat');
 
 const formvalid = formErrors => {
     let valid = true;
@@ -15,6 +17,7 @@ export default class Browser extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: null,
             event_name: null,
             event_details: null,
             event_type: null,
@@ -35,6 +38,7 @@ export default class Browser extends Component {
         event.preventDefault();
         const { name, value } = event.target;
         let formErrors = this.state.formErrors;
+        console.log(name, value)
         switch (name) {
             case "event_name":
                 formErrors.event_name = value.length < 3 ? "Must be atleast 3 characters long" : "";
@@ -47,6 +51,10 @@ export default class Browser extends Component {
                 break;
             case "location":
                 formErrors.location = value.length < 3 ? "Must be atleast 3 characters long" : "";
+                break;
+            case "id":
+                console.log(value);
+                this.setState({ num: value });
                 break;
             default:
                 break;
@@ -82,30 +90,6 @@ export default class Browser extends Component {
                     window.location.reload();
                 })
                 .catch(error => console.log('there is some error while adding the event: ', error))
-        } else {
-            console.log('form Invalid');
-        }
-    }
-
-    editEvent = (event) => {
-        event.preventDefault();
-        if (formvalid(this.state.formErrors)) {
-            console.log('valid form')
-            const newEvent = {
-                id: this.props.match.params.id,
-                event_name: this.state.event_name,
-                event_details: this.state.event_details,
-                event_type: this.state.event_type,
-                location: this.state.location,
-                start_time: this.state.start_time,
-                end_time: this.state.end_time
-            };
-            Axios.post('http://localhost:3001/events/' + newEvent.id, newEvent)
-                .then(result => {
-                    console.log('the event has been updated...')
-                    window.location.reload();
-                })
-                .catch(error => console.log('there is some error while updating the event: ', error))
         } else {
             console.log('form Invalid');
         }
@@ -150,10 +134,10 @@ export default class Browser extends Component {
                     </div>
                     <div className="col-sm-12 mb-3">
                         <div className='row'>&nbsp;&nbsp;&nbsp;
-                        <input type="text" id="myFilter" className="form-control col-sm-10" onChange={this.handleChange} 
+                        <input type="text" id="myFilter" className="form-control col-sm-10" onChange={this.handleChange}
                                 placeholder="Search for keyword.." /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <button type="button" className="btn btn-primary" data-toggle="modal"
-                                data-target="#exampleModal"  data-whatever="@getbootstrap" >Create an Event</button></div>
+                                data-target="#exampleModal" data-whatever="@getbootstrap" >Create an Event</button></div>
                         <div className="modal fade" id="exampleModal" tabIndex="-1"
                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div className="modal-dialog" role="document">
@@ -240,89 +224,16 @@ export default class Browser extends Component {
                                                 seek </button>
                                         </div>
 
+
                                         <div id={'collapse' + index} className="collapse" aria-labelledby={"heading" + index} data-parent="#accordionEvents">
                                             <div className="card-body">
                                                 <h5 className='lead'><b>Event details</b></h5>
                                                 <p className='lead'>{listValue.event_details}</p>
                                                 <p className='lead'><b>Location -</b>&nbsp;{listValue.location}</p>
-                                                <p className='lead'><b>Start-Date :</b>&nbsp;{listValue.start_time}</p>
-                                                <p className='lead'><b>End-Date :</b>&nbsp;{listValue.end_time}</p><br /><br />
-                                                <button className="btn btn-secondary" data-toggle="modal" data-target={"#editModal" + index} data-whatever="@getbootstrap" >Edit</button>&nbsp;&nbsp;
+                                                <p className='lead'><b>Start-Date :</b>&nbsp;{dateFormat(listValue.start_time,"fullDate")}</p>
+                                                <p className='lead'><b>End-Date :</b>&nbsp;{dateFormat(listValue.end_time,"fullDate")}</p><br /><br />
+                                                <Link to={"/edit-event/"+listValue.id} className="btn btn-secondary" >Edit</Link>&nbsp;&nbsp;
                                                 <button className="btn btn-danger" onClick={this.deleteEvent.bind(this, listValue.id)}>Delete</button>
-                                                <div className="modal fade" id={"editModal" + index} tabIndex="-1" role="dialog" aria-labelledby={"exampleModalLabel" + index} aria-hidden="true">
-                                                    <div className="modal-dialog" role="document">
-                                                        <div className="modal-content">
-                                                            <div className="modal-header">
-                                                                <h5 className="modal-title" id={"exampleModalLabel" + index}>Edit {listValue.event_name}</h5>
-                                                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div className="modal-body">
-                                                                <form onSubmit={this.editEvent}>
-                                                                    <div className='form-group'>
-                                                                        <label>Event Name</label>
-                                                                        <input required type="text"
-                                                                            className={`form-control ${formErrors.event_name.length > 0 ? 'is-invalid' : null}`}
-                                                                            name="event_name"
-                                                                            value={listValue.event_name || ''}
-                                                                            onChange={this.handleErrors} />
-                                                                        {formErrors.event_name.length > 0 && <span className='error text-danger'>{formErrors.event_name}</span>}
-                                                                    </div>
-                                                                    <div className='form-group'>
-                                                                        <label>Event Details</label>
-                                                                        <textarea required type="text"
-                                                                            className={`form-control ${formErrors.event_details.length > 0 ? 'is-invalid' : null}`}
-                                                                            name="event_details"
-                                                                            value={listValue.event_details || ''}
-                                                                            onChange={this.handleErrors} />
-                                                                        {formErrors.event_details.length > 0 && <span className='error text-danger'>{formErrors.event_details}</span>}
-                                                                    </div>
-                                                                    <div className='form-group'>
-                                                                        <label>Event Type</label>
-                                                                        <input required type="text"
-                                                                            className={`form-control ${formErrors.event_type.length > 0 ? 'is-invalid' : null}`}
-                                                                            name="event_type"
-                                                                            value={listValue.event_type || ''}
-                                                                            onChange={this.handleErrors} />
-                                                                        {formErrors.event_type.length > 0 && <span className='error text-danger'>{formErrors.event_type}</span>}
-                                                                    </div>
-                                                                    <div className='form-group'>
-                                                                        <label>Event Location</label>
-                                                                        <input required type="text"
-                                                                            className={`form-control ${formErrors.location.length > 0 ? 'is-invalid' : null}`}
-                                                                            name="location"
-                                                                            value={listValue.location || ''}
-                                                                            onChange={this.handleErrors} />
-                                                                        {formErrors.location.length > 0 && <span className='error text-danger'>{formErrors.location}</span>}
-                                                                    </div>
-                                                                    <div className="form-group">
-                                                                        <label>Start Date</label>
-                                                                        <DatePicker required
-                                                                            // selected={listValue.start_time}
-                                                                            onChange={date => this.setState({ start_time: date })}
-                                                                            dateFormat="dd-mm-yyyy"
-                                                                            name="start_time"
-                                                                            className="form-control"
-                                                                        />
-                                                                    </div>
-                                                                    <div className="form-group">
-                                                                        <label>End Date</label>
-                                                                        <DatePicker required
-                                                                            // selected={listValue.end_time}
-                                                                            onChange={date => this.setState({ end_time: date })}
-                                                                            dateFormat="dd-mm-yyyy"
-                                                                            name="end_time"
-                                                                            className="form-control"
-                                                                        />
-                                                                    </div>
-                                                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>&nbsp;&nbsp;&nbsp;
-                                                                    <button type="submit" className="btn btn-primary" >Submit</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

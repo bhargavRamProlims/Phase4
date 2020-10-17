@@ -55,31 +55,22 @@
       "id": 6
     },
     {
-      "event_name": "Testing3",
-      "event_details": "This event is about the Heavy test concert.",
-      "event_type": "test",
-      "location": "Bangalore",
-      "start_time": "2020-10-17T15:12:20.955Z",
-      "end_time": "2020-10-18T15:14:00.000Z",
-      "id": 7
-    },
-    {
-      "event_name": "new event",
-      "event_details": "this is just experimental one",
-      "event_type": "expt",
-      "location": "hyd",
-      "start_time": "2020-10-17T15:12:20.955Z",
-      "end_time": "2020-10-18T15:14:00.000Z",
-      "id": 11
-    },
-    {
+      "id": 7,
       "event_name": "testing",
-      "event_details": "this another testing event",
-      "event_type": "testing",
-      "location": "hyd",
-      "start_time": "2020-10-17T15:14:00.272Z",
-      "end_time": "2020-10-18T15:14:00.000Z",
-      "id": 12
+      "event_details": "this is a test which is updated",
+      "event_type": "test",
+      "location": "Hyderabad",
+      "start_time": "2020-10-17T17:02:09.825Z",
+      "end_time": "2020-10-20T17:02:09.000Z"
+    },
+    {
+      "id": 8,
+      "event_name": "updated test",
+      "event_details": "this is for further testing",
+      "event_type": "test",
+      "location": "Delhi",
+      "start_time": "2020-10-17T18:30:00.000Z",
+      "end_time": "2020-10-22T19:19:39.000Z"
     }
   ]
 }
