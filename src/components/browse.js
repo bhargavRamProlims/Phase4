@@ -17,20 +17,15 @@ export default class Browser extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: null,
-            event_name: null,
-            event_details: null,
-            event_type: null,
-            location: null,
-            start_time: new Date(),
-            end_time: new Date(),
             formErrors: {
                 event_name: "",
                 event_details: "",
                 event_type: "",
                 location: ""
             },
-            events: []
+            events: [],
+            eventList: null,
+            locations: []
         };
     }
 
@@ -67,6 +62,7 @@ export default class Browser extends Component {
             .then(result => {
                 const EventList = result.data;
                 this.setState({ events: EventList });
+                this.setState({ locations: EventList })
                 console.log(this.state.events);
             })
             .catch(error => console.log('there is some error in retrieving... the error.', error))
@@ -110,13 +106,23 @@ export default class Browser extends Component {
     handleChange = (event) => {
         event.preventDefault();
         console.log(event.target.value)
-        Axios.get('http://localhost:3001/events?q=' + event.target.value)
-            .then(result => {
-                const EventList = result.data;
-                this.setState({ events: EventList });
-                console.log(this.state.events);
-            })
-            .catch(error => console.log(error))
+        if (this.state.eventList) {
+            Axios.get('http://localhost:3001/events?location=' + this.state.eventList + '&q=' + event.target.value)
+                .then(result => {
+                    const EventList = result.data;
+                    this.setState({ events: EventList });
+                    console.log(this.state.events);
+                })
+                .catch(error => console.log(error))
+        } else {
+            Axios.get('http://localhost:3001/events?q=' + event.target.value)
+                .then(result => {
+                    const EventList = result.data;
+                    this.setState({ events: EventList });
+                    console.log(this.state.events);
+                })
+                .catch(error => console.log(error))
+        }
     }
 
     componentDidMount() {
@@ -134,16 +140,24 @@ export default class Browser extends Component {
                     </div>
                     <div className="col-sm-12 mb-3">
                         <div className='row'>&nbsp;&nbsp;&nbsp;
-                        <input type="text" id="myFilter" className="form-control col-sm-10" onChange={this.handleChange}
+                        <select required className="form-control col-sm-2" placeholder="Available Plans"
+                                onChange={(e) => { this.setState({ eventList: e.target.value }) }}
+                                onClick={this.handleChange}>
+                                <option defaultValue></option>
+                                {Array.from(new Set(this.state.locations.map(value => value.location))).map(location => {
+                                    return <option value={location}>{location}</option>
+                                })}
+                            </select>&nbsp;&nbsp;&nbsp;
+                        <input type="text" id="myFilter" className="form-control col-sm-8" onChange={this.handleChange}
                                 placeholder="Search for keyword.." /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <button type="button" className="btn btn-primary" data-toggle="modal"
-                                data-target="#exampleModal" data-whatever="@getbootstrap" >Create an Event</button></div>
+                                data-target="#exampleModal" data-whatever="@getbootstrap" >Add an Event</button></div>
                         <div className="modal fade" id="exampleModal" tabIndex="-1"
                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div className="modal-dialog" role="document">
                                 <div className="modal-content">
                                     <div className="modal-header">
-                                        <h5 className="modal-title" id="exampleModalLabel">Create an Event</h5>
+                                        <h5 className="modal-title" id="exampleModalLabel">Add an Event</h5>
                                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -230,9 +244,9 @@ export default class Browser extends Component {
                                                 <h5 className='lead'><b>Event details</b></h5>
                                                 <p className='lead'>{listValue.event_details}</p>
                                                 <p className='lead'><b>Location -</b>&nbsp;{listValue.location}</p>
-                                                <p className='lead'><b>Start-Date :</b>&nbsp;{dateFormat(listValue.start_time,"fullDate")}</p>
-                                                <p className='lead'><b>End-Date :</b>&nbsp;{dateFormat(listValue.end_time,"fullDate")}</p><br /><br />
-                                                <Link to={"/edit-event/"+listValue.id} className="btn btn-secondary" >Edit</Link>&nbsp;&nbsp;
+                                                <p className='lead'><b>Start-Date :</b>&nbsp;{dateFormat(listValue.start_time, "fullDate")}</p>
+                                                <p className='lead'><b>End-Date :</b>&nbsp;{dateFormat(listValue.end_time, "fullDate")}</p><br /><br />
+                                                <Link to={"/edit-event/" + listValue.id} className="btn btn-secondary" >Edit</Link>&nbsp;&nbsp;
                                                 <button className="btn btn-danger" onClick={this.deleteEvent.bind(this, listValue.id)}>Delete</button>
                                             </div>
                                         </div>
