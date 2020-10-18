@@ -1,40 +1,40 @@
 {
   "events": [
     {
+      "id": 1,
       "event_name": "Folk-Tales",
-      "event_details": "This event is about the folk music.",
-      "event_type": "music",
+      "event_details": "This event is about the folk drama. The Play takes place in the ancient Indian culture. ",
+      "event_type": "Drama",
       "location": "Hyderabad",
-      "start_time": "2020-10-17T15:12:20.955Z",
-      "end_time": "2020-10-18T15:14:00.000Z",
-      "id": 1
+      "start_time": "2020-10-10T15:12:20.000Z",
+      "end_time": "2020-10-17T15:14:00.000Z"
     },
     {
+      "id": 2,
       "event_name": "Folk-Movie",
-      "event_details": "This event is about the folk Movie.",
+      "event_details": "This event is about the folk Movie. The movie will be played in Theatres.",
       "event_type": "movie",
       "location": "Hyderabad",
-      "start_time": "2020-10-17T15:12:20.955Z",
-      "end_time": "2020-10-18T15:14:00.000Z",
-      "id": 2
+      "start_time": "2020-10-19T15:12:20.000Z",
+      "end_time": "2020-10-20T15:14:00.000Z"
     },
     {
+      "id": 3,
       "event_name": "Metallica",
-      "event_details": "This event is about the Heavy Metal concert.",
+      "event_details": "Metallica is an American heavy metal band. The band was formed in 1981 in Los Angeles by vocalist/guitarist James Hetfield and drummer Lars Ulrich, and has been based in San Francisco for most of its career. Metallica has released ten studio albums, four live albums, a cover album, five extended plays, 37 singles and 39 music videos. The band has won nine Grammy Awards from 23 nominations, and its last six studio albums (beginning with Metallica) have consecutively debuted at number one on the Billboard 200. Metallica ranks as one of the most commercially successful bands of all time, having sold over 125 million albums worldwide as of 2018.",
       "event_type": "music",
-      "location": "Hyderabad",
-      "start_time": "2020-10-17T15:12:20.955Z",
-      "end_time": "2020-10-18T15:14:00.000Z",
-      "id": 3
+      "location": "Delhi",
+      "start_time": "2020-10-19T15:12:20.000Z",
+      "end_time": "2020-10-24T15:14:00.000Z"
     },
     {
+      "id": 4,
       "event_name": "Local Train",
       "event_details": "This event is about the Music concert.",
       "event_type": "music",
       "location": "Delhi",
       "start_time": "2020-10-17T15:12:20.955Z",
-      "end_time": "2020-10-18T15:14:00.000Z",
-      "id": 4
+      "end_time": "2020-10-23T15:14:00.000Z"
     },
     {
       "event_name": "Local Train",
@@ -46,31 +46,49 @@
       "id": 5
     },
     {
+      "id": 6,
       "event_name": "IPrevail",
-      "event_details": "This event is about the Heavy Metal concert.",
+      "event_details": "I Prevail is an American metalcore band formed in Southfield, Michigan in 2013. They released their debut EP Heart vs. Mind (2014) and rose to popularity from releasing a metal cover of Taylor Swift's \"Blank Space\" as a single, which eventually was certified platinum in the US. The band has since released two studio albums, Lifelines (2016) and Trauma (2019). The band found success with their original material as well, with singles \"Breaking Down\" and \"Hurricane\" performing well on rock radio, The single \"Bow Down\" was nominated for the Grammy Award for Best Metal Performance of 2019 and Trauma was nominated for the Grammy Award for Best Rock Album the same year.",
       "event_type": "music",
       "location": "Bangalore",
-      "start_time": "2020-10-17T15:12:20.955Z",
-      "end_time": "2020-10-18T15:14:00.000Z",
-      "id": 6
+      "start_time": "2020-11-02T15:12:20.000Z",
+      "end_time": "2020-11-07T15:14:00.000Z"
     },
     {
-      "id": 7,
-      "event_name": "testing",
-      "event_details": "this is a test which is updated",
-      "event_type": "test",
+      "event_name": "Metallica",
+      "event_details": "Metallica is an American heavy metal band. The band was formed in 1981 in Los Angeles by vocalist/guitarist James Hetfield and drummer Lars Ulrich, and has been based in San Francisco for most of its career. Metallica has released ten studio albums, four live albums, a cover album, five extended plays, 37 singles and 39 music videos. The band has won nine Grammy Awards from 23 nominations, and its last six studio albums (beginning with Metallica) have consecutively debuted at number one on the Billboard 200. Metallica ranks as one of the most commercially successful bands of all time, having sold over 125 million albums worldwide as of 2018.",
+      "event_type": "music",
       "location": "Hyderabad",
-      "start_time": "2020-10-17T17:02:09.825Z",
-      "end_time": "2020-10-20T17:02:09.000Z"
+      "start_time": "2020-10-25T18:30:00.000Z",
+      "end_time": "2020-10-30T18:30:00.000Z",
+      "id": 10
     },
     {
-      "id": 8,
-      "event_name": "updated test",
-      "event_details": "this is for further testing",
-      "event_type": "test",
+      "event_name": "Metallica",
+      "event_details": "Metallica is an American heavy metal band. The band was formed in 1981 in Los Angeles by vocalist/guitarist James Hetfield and drummer Lars Ulrich, and has been based in San Francisco for most of its career. Metallica has released ten studio albums, four live albums, a cover album, five extended plays, 37 singles and 39 music videos. The band has won nine Grammy Awards from 23 nominations, and its last six studio albums (beginning with Metallica) have consecutively debuted at number one on the Billboard 200. Metallica ranks as one of the most commercially successful bands of all time, having sold over 125 million albums worldwide as of 2018.",
+      "event_type": "music",
+      "location": "Bangalore",
+      "start_time": "2020-10-11T18:30:00.000Z",
+      "end_time": "2020-10-16T18:30:00.000Z",
+      "id": 11
+    },
+    {
+      "event_name": "IPrevail",
+      "event_details": "I Prevail is an American metalcore band formed in Southfield, Michigan in 2013. They released their debut EP Heart vs. Mind (2014) and rose to popularity from releasing a metal cover of Taylor Swift's \"Blank Space\" as a single, which eventually was certified platinum in the US. The band has since released two studio albums, Lifelines (2016) and Trauma (2019). The band found success with their original material as well, with singles \"Breaking Down\" and \"Hurricane\" performing well on rock radio[citation needed], The single \"Bow Down\" was nominated for the Grammy Award for Best Metal Performance of 2019 and Trauma was nominated for the Grammy Award for Best Rock Album the same year.",
+      "event_type": "music",
+      "location": "Hyderabad",
+      "start_time": "2020-11-08T18:30:00.000Z",
+      "end_time": "2020-11-13T18:30:00.000Z",
+      "id": 12
+    },
+    {
+      "event_name": "Folk-Tales",
+      "event_details": "This event is about the Folk Drama. This Play takes place in the Ancient Indian Culture. This group raises the awareness of the Ancient heritage of India.",
+      "event_type": "Drama",
       "location": "Delhi",
-      "start_time": "2020-10-17T18:30:00.000Z",
-      "end_time": "2020-10-22T19:19:39.000Z"
+      "start_time": "2020-10-04T18:30:00.000Z",
+      "end_time": "2020-10-08T18:30:00.000Z",
+      "id": 13
     }
   ]
 }

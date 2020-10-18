@@ -1,9 +1,14 @@
+import LogoImage from "../images/home.jpg";
 import Axios from "axios";
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import { Link } from "react-router-dom";
 var dateFormat = require('dateformat');
 
+var sectionStyle = {
+    backgroundImage: `url(${LogoImage})`,
+    width: 1365,
+}
 const formvalid = formErrors => {
     let valid = true;
     Object.values(formErrors).forEach(value => {
@@ -58,7 +63,7 @@ export default class Browser extends Component {
     }
 
     getEvents() {
-        Axios.get('http://localhost:3001/events')
+        Axios.get('http://localhost:3001/events?_sort=start_time')
             .then(result => {
                 const EventList = result.data;
                 this.setState({ events: EventList });
@@ -84,6 +89,7 @@ export default class Browser extends Component {
                 .then(result => {
                     console.log('the event has been added...')
                     window.location.reload();
+                    
                 })
                 .catch(error => console.log('there is some error while adding the event: ', error))
         } else {
@@ -107,7 +113,7 @@ export default class Browser extends Component {
         event.preventDefault();
         console.log(event.target.value)
         if (this.state.eventList) {
-            Axios.get('http://localhost:3001/events?location=' + this.state.eventList + '&q=' + event.target.value)
+            Axios.get('http://localhost:3001/events?_sort=start_time&location=' + this.state.eventList + '&q=' + event.target.value)
                 .then(result => {
                     const EventList = result.data;
                     this.setState({ events: EventList });
@@ -115,7 +121,7 @@ export default class Browser extends Component {
                 })
                 .catch(error => console.log(error))
         } else {
-            Axios.get('http://localhost:3001/events?q=' + event.target.value)
+            Axios.get('http://localhost:3001/events?_sort=start_time&q=' + event.target.value)
                 .then(result => {
                     const EventList = result.data;
                     this.setState({ events: EventList });
@@ -132,9 +138,10 @@ export default class Browser extends Component {
     render() {
         const { formErrors } = this.state;
         return (
+            <div style={sectionStyle}>
             <div className="container">
                 <div className="row">
-                    <div className="pricing-header px-3 py-3 pt-md-6 pb-md-6 mx-auto text-center">
+                    <div className="pricing-header pt-md-6 pb-md-6 mx-auto text-center text-white" >
                         <h1 className="display-3">Welcome to FindMeEvent</h1>
                         <p className="lead">Here you can look up the events in a particular region and browse the events using the keywords.</p>
                     </div>
@@ -143,9 +150,9 @@ export default class Browser extends Component {
                         <select required className="form-control col-sm-2" placeholder="Available Plans"
                                 onChange={(e) => { this.setState({ eventList: e.target.value }) }}
                                 onClick={this.handleChange}>
-                                <option defaultValue></option>
-                                {Array.from(new Set(this.state.locations.map(value => value.location))).map(location => {
-                                    return <option value={location}>{location}</option>
+                                <option defaultValue > </option>
+                                {Array.from(new Set(this.state.locations.map(value => value.location))).map((location,index) => {
+                                    return <option value={location} key={index}>{location}</option>
                                 })}
                             </select>&nbsp;&nbsp;&nbsp;
                         <input type="text" id="myFilter" className="form-control col-sm-8" onChange={this.handleChange}
@@ -201,7 +208,7 @@ export default class Browser extends Component {
                                                 <DatePicker
                                                     selected={this.state.start_time}
                                                     onChange={date => this.setState({ start_time: date })}
-                                                    dateFormat="dd-mm-yyyy"
+                                                    dateFormat="dd-MM-yyyy"
                                                     name="start_time"
                                                     className="form-control"
                                                 />
@@ -211,7 +218,7 @@ export default class Browser extends Component {
                                                 <DatePicker
                                                     selected={this.state.end_time}
                                                     onChange={date => this.setState({ end_time: date })}
-                                                    dateFormat="dd-mm-yyyy"
+                                                    dateFormat="dd-MM-yyyy"
                                                     name="end_time"
                                                     className="form-control"
                                                 />
@@ -219,6 +226,7 @@ export default class Browser extends Component {
                                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>&nbsp;&nbsp;&nbsp;
                                             <button type="submit" className="btn btn-primary" >Submit</button>
                                         </form>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -259,6 +267,7 @@ export default class Browser extends Component {
                     </div>
 
                 </div>
+            </div>
             </div>
         )
     }
