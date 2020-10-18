@@ -16,7 +16,7 @@ const Home = () => {
         <div className=" text-white bg-white" style={sectionStyle}>
                 <div className="pricing-header px-10 py-10 pt-md-5 pb-md-5 mx-auto text-center">
                     <h1 className="display-1">Welcome to FindMeEvent</h1>
-                    <p className="lead">Here you can look up the events in a particular region and browse the events using the keywords.</p>
+                    <p className="lead">Here you can look up the events in a particular region and add Events. Browse the events using the keywords.</p>
                 </div>
             
         </div>

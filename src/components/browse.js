@@ -7,7 +7,7 @@ var dateFormat = require('dateformat');
 
 var sectionStyle = {
     backgroundImage: `url(${LogoImage})`,
-    width: 1365,
+    width: 1349,
 }
 const formvalid = formErrors => {
     let valid = true;
@@ -143,7 +143,7 @@ export default class Browser extends Component {
                 <div className="row">
                     <div className="pricing-header pt-md-6 pb-md-6 mx-auto text-center text-white" >
                         <h1 className="display-3">Welcome to FindMeEvent</h1>
-                        <p className="lead">Here you can look up the events in a particular region and browse the events using the keywords.</p>
+                        <p className="lead">Here you can look up the events in a particular region and add Events. Browse the events using the keywords.</p>
                     </div>
                     <div className="col-sm-12 mb-3">
                         <div className='row'>&nbsp;&nbsp;&nbsp;
