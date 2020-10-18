@@ -1,0 +1,20 @@
+FindMeEvent - Phase 4 react-project
+Author - Bhargav Ram
+Github Link - https://github.com/bhargavRamProlims/Phase4
+
+- npm insatll : install the required dependencies.
+- npm start : will start the json-server first and then the reactJs APP.
+
+- Json-server is used for database.
+- concurrently is used for running the json-server parallel.
+
+
+- use browse route to access the events.
+- cards are used to display the event's data.
+- add events has been made using modals.
+- edit event had issues with passing the id of the json data. Hence seperate route was created for edit events.
+- react-datepicker is used for calander. the user can select the date of the event start date and end date.
+- deletion of the event can be used from browser itself.
+- the image for the background is taken from : https://pixabay.com/get/57e1d6434d56ae14f6d1867dda353678153cdee55359734c_1920.jpg
+---the website has copyright free images.
+
